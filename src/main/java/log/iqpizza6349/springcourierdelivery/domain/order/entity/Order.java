@@ -2,16 +2,14 @@ package log.iqpizza6349.springcourierdelivery.domain.order.entity;
 
 import log.iqpizza6349.springcourierdelivery.domain.item.entity.Item;
 import log.iqpizza6349.springcourierdelivery.exception.GlobalException;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 
 @Entity(name = "orders")
 @Getter
+@Builder
 @AllArgsConstructor @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
@@ -21,7 +19,7 @@ public class Order {
     @Column(nullable = false)
     private String ordered;
 
-    @OneToOne
+    @ManyToOne
     private Item item;
 
     @Column(nullable = false)
@@ -50,9 +48,10 @@ public class Order {
         state = State.SHIPPING_CONFIRMATION;
     }
 
-    enum State {
-        PRODUCT_PREPARE, NO_STOCK,
-        DELIVERY_PREPARE, SHIPPING, CANCELED,
-        DELIVERY_COMPLETE, SHIPPING_CONFIRMATION
+    public enum State {
+        NO_STOCK, PRODUCT_PREPARE,
+        DELIVERY_PREPARE, SHIPPING,
+        DELIVERY_COMPLETE, SHIPPING_CONFIRMATION,
+        CANCELED
     }
 }

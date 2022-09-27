@@ -1,14 +1,12 @@
 package log.iqpizza6349.springcourierdelivery.domain.item.entity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Builder
 @AllArgsConstructor @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Item {
 
@@ -17,4 +15,10 @@ public class Item {
 
     @Column(unique = true, nullable = false)
     private String name;
+
+    private long amount;
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
 }

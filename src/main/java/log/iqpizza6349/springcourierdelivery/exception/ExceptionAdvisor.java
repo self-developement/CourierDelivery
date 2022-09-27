@@ -13,6 +13,7 @@ public class ExceptionAdvisor {
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ResponseDto> defaultException(Exception ignored) {
+        ignored.printStackTrace();
         ResponseDto responseDto = new ResponseDto("서버에 커피를 쏟았습니다.");
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(responseDto);

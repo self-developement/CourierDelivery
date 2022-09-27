@@ -15,10 +15,8 @@ spring:
     properties:
       hibernate:
         show_sql: true
-  rabbitmq:
-    username: ${MQ_USERNAME}
-    password: ${MQ_PASSWORD}
-    virtual-host: /
   batch:
     job:
       enabled: false
+    jdbc:
+      initialize-schema: always
