@@ -19,3 +19,6 @@ spring:
     username: ${MQ_USERNAME}
     password: ${MQ_PASSWORD}
     virtual-host: /
+  batch:
+    job:
+      enabled: false
